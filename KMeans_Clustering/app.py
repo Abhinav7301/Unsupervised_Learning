@@ -25,8 +25,11 @@ st.markdown("""
 .stApp {
     background: linear-gradient(
         135deg,
-        #f8fafc 0%,
-        #dbeafe 100%
+        #FF1493 0%,
+        #FFD700 25%,
+        #00CED1 50%,
+        #FF69B4 75%,
+        #32CD32 100%
     );
 }
 
@@ -35,46 +38,60 @@ st.markdown("""
     text-align:center;
     font-size:48px;
     font-weight:bold;
-    color:#2563eb;
+    color:#FF1493;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
 .sub-title {
     text-align:center;
     font-size:18px;
-    color:#475569;
+    color:#FFFFFF;
     margin-bottom:20px;
+    font-weight:bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 
 /* Sidebar */
 [data-testid="stSidebar"] {
-    background-color:#eff6ff;
+    background: linear-gradient(180deg, #00CED1, #00FFFF);
 }
 
 /* Metrics */
 [data-testid="metric-container"] {
-    background:white;
-    border:2px solid #bfdbfe;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    border:3px solid #FF1493;
     padding:15px;
     border-radius:15px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+    box-shadow:0 4px 12px rgba(255,20,147,0.4);
 }
 
 /* Dataframe */
 [data-testid="stDataFrame"] {
-    background:white;
+    background: linear-gradient(135deg, #F0F8FF, #E0FFFF);
 }
 
 /* Tabs */
 .stTabs [data-baseweb="tab"] {
     font-size:16px;
     font-weight:600;
+    color:#FF1493;
 }
 
 /* Buttons */
 .stDownloadButton button {
-    background-color:#2563eb;
+    background: linear-gradient(135deg, #FF1493, #FF69B4);
     color:white;
     border-radius:10px;
+    font-weight:bold;
+    border:2px solid #FFD700;
+}
+
+.stButton button {
+    background: linear-gradient(135deg, #00CED1, #00FFFF);
+    color:#000;
+    border-radius:10px;
+    font-weight:bold;
+    border:2px solid #FF1493;
 }
 
 </style>
@@ -229,12 +246,14 @@ with tab2:
         y=X[:, 1],
         color=labels.astype(str),
         title="K-Means Clustering Result",
-        color_discrete_sequence=px.colors.qualitative.Bold
+        color_discrete_sequence=["#FF1493", "#00CED1", "#FFD700", "#FF69B4", "#32CD32", "#FFA500", "#00FF7F", "#FF6347", "#9370DB", "#20B2AA"]
     )
 
     fig.update_layout(
-        template="plotly_white",
-        height=600
+        template="plotly_dark",
+        height=600,
+        paper_bgcolor="rgba(255,20,147,0.1)",
+        plot_bgcolor="rgba(0,206,209,0.1)"
     )
 
     st.plotly_chart(
@@ -286,12 +305,11 @@ with tab3:
             names="Cluster",
             hole=0.5,
             title="Cluster Distribution",
-            color_discrete_sequence=
-            px.colors.qualitative.Set3
+            color_discrete_sequence=["#FF1493", "#00CED1", "#FFD700", "#FF69B4", "#32CD32", "#FFA500", "#00FF7F", "#FF6347", "#9370DB", "#20B2AA"]
         )
 
         pie.update_layout(
-            template="plotly_white"
+            template="plotly_dark"
         )
 
         st.plotly_chart(
@@ -307,11 +325,11 @@ with tab3:
             y="Count",
             color="Cluster",
             title="Cluster Sizes",
-            color_continuous_scale="viridis"
+            color_discrete_sequence=["#FF1493", "#00CED1", "#FFD700", "#FF69B4", "#32CD32", "#FFA500", "#00FF7F", "#FF6347", "#9370DB", "#20B2AA"]
         )
 
         bar.update_layout(
-            template="plotly_white"
+            template="plotly_dark"
         )
 
         st.plotly_chart(
