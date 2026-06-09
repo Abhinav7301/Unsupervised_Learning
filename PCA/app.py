@@ -26,8 +26,11 @@ st.markdown("""
 .stApp{
 background:linear-gradient(
 135deg,
-#f8fafc,
-#dbeafe
+#FF1493 0%,
+#FFD700 25%,
+#00CED1 50%,
+#FF69B4 75%,
+#32CD32 100%
 );
 }
 
@@ -35,24 +38,42 @@ background:linear-gradient(
 text-align:center;
 font-size:48px;
 font-weight:bold;
-color:#2563eb;
+color:#FF1493;
+text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
 .sub-title{
 text-align:center;
 font-size:18px;
-color:#475569;
+color:#FFFFFF;
+font-weight:bold;
+text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 
 [data-testid="metric-container"]{
-background:white;
+background:linear-gradient(135deg, #FFD700, #FFA500);
 border-radius:15px;
 padding:15px;
-border:2px solid #bfdbfe;
+border:3px solid #FF1493;
+box-shadow:0 4px 12px rgba(255,20,147,0.4);
 }
 
 [data-testid="stSidebar"]{
-background:#eff6ff;
+background:linear-gradient(180deg, #00CED1, #00FFFF);
+}
+
+.stTabs [data-baseweb="tab"] {
+    font-size:16px;
+    font-weight:600;
+    color:#FF1493;
+}
+
+.stDownloadButton button {
+    background: linear-gradient(135deg, #FF1493, #FF69B4);
+    color:white;
+    border-radius:10px;
+    font-weight:bold;
+    border:2px solid #FFD700;
 }
 
 </style>
@@ -180,12 +201,14 @@ with tab2:
         y="PC2",
         title="PCA Projection",
         color="PC1",
-        color_continuous_scale="viridis"
+        color_continuous_scale="Hot"
     )
 
     fig.update_layout(
-        template="plotly_white",
-        height=600
+        template="plotly_dark",
+        height=600,
+        paper_bgcolor="rgba(255,20,147,0.1)",
+        plot_bgcolor="rgba(0,206,209,0.1)"
     )
 
     st.plotly_chart(
@@ -220,11 +243,12 @@ with tab3:
         x="Component",
         y="Variance",
         color="Variance",
-        title="Variance Explained"
+        title="Variance Explained",
+        color_continuous_scale="Reds"
     )
 
     bar.update_layout(
-        template="plotly_white"
+        template="plotly_dark"
     )
 
     st.plotly_chart(
