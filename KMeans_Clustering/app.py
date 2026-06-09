@@ -25,11 +25,8 @@ st.markdown("""
 .stApp {
     background: linear-gradient(
         135deg,
-        #FF1493 0%,
-        #FFD700 25%,
-        #00CED1 50%,
-        #FF69B4 75%,
-        #32CD32 100%
+        #0f172a,
+        #1e293b
     );
 }
 
@@ -38,60 +35,60 @@ st.markdown("""
     text-align:center;
     font-size:48px;
     font-weight:bold;
-    color:#FF1493;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    color:#06b6d4;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 .sub-title {
     text-align:center;
     font-size:18px;
-    color:#FFFFFF;
+    color:#cbd5e1;
     margin-bottom:20px;
     font-weight:bold;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 
 /* Sidebar */
 [data-testid="stSidebar"] {
-    background: linear-gradient(180deg, #00CED1, #00FFFF);
+    background: #1e293b;
+    border-right: 2px solid #06b6d4;
 }
 
 /* Metrics */
 [data-testid="metric-container"] {
-    background: linear-gradient(135deg, #FFD700, #FFA500);
-    border:3px solid #FF1493;
+    background: linear-gradient(135deg, #1e293b, #334155);
+    border:2px solid #06b6d4;
     padding:15px;
-    border-radius:15px;
-    box-shadow:0 4px 12px rgba(255,20,147,0.4);
+    border-radius:12px;
+    box-shadow:0 4px 6px rgba(6, 182, 212, 0.2);
 }
 
 /* Dataframe */
 [data-testid="stDataFrame"] {
-    background: linear-gradient(135deg, #F0F8FF, #E0FFFF);
+    background: #1e293b;
 }
 
 /* Tabs */
 .stTabs [data-baseweb="tab"] {
     font-size:16px;
     font-weight:600;
-    color:#FF1493;
+    color:#cbd5e1;
 }
 
 /* Buttons */
 .stDownloadButton button {
-    background: linear-gradient(135deg, #FF1493, #FF69B4);
+    background: linear-gradient(135deg, #06b6d4, #0891b2);
     color:white;
-    border-radius:10px;
+    border-radius:8px;
     font-weight:bold;
-    border:2px solid #FFD700;
+    border:2px solid #06b6d4;
 }
 
 .stButton button {
-    background: linear-gradient(135deg, #00CED1, #00FFFF);
-    color:#000;
-    border-radius:10px;
+    background: linear-gradient(135deg, #06b6d4, #0891b2);
+    color:white;
+    border-radius:8px;
     font-weight:bold;
-    border:2px solid #FF1493;
+    border:2px solid #06b6d4;
 }
 
 </style>
@@ -246,14 +243,19 @@ with tab2:
         y=X[:, 1],
         color=labels.astype(str),
         title="K-Means Clustering Result",
-        color_discrete_sequence=["#FF1493", "#00CED1", "#FFD700", "#FF69B4", "#32CD32", "#FFA500", "#00FF7F", "#FF6347", "#9370DB", "#20B2AA"]
+        color_discrete_sequence=[
+            "#06b6d4", "#10b981", "#f59e0b", "#ef4444", 
+            "#8b5cf6", "#ec4899", "#14b8a6", "#f97316",
+            "#6366f1", "#84cc16"
+        ]
     )
 
     fig.update_layout(
         template="plotly_dark",
         height=600,
-        paper_bgcolor="rgba(255,20,147,0.1)",
-        plot_bgcolor="rgba(0,206,209,0.1)"
+        paper_bgcolor="#0f172a",
+        plot_bgcolor="#1e293b",
+        font=dict(color="#cbd5e1")
     )
 
     st.plotly_chart(
@@ -305,11 +307,17 @@ with tab3:
             names="Cluster",
             hole=0.5,
             title="Cluster Distribution",
-            color_discrete_sequence=["#FF1493", "#00CED1", "#FFD700", "#FF69B4", "#32CD32", "#FFA500", "#00FF7F", "#FF6347", "#9370DB", "#20B2AA"]
+            color_discrete_sequence=[
+                "#06b6d4", "#10b981", "#f59e0b", "#ef4444", 
+                "#8b5cf6", "#ec4899", "#14b8a6", "#f97316",
+                "#6366f1", "#84cc16"
+            ]
         )
 
         pie.update_layout(
-            template="plotly_dark"
+            template="plotly_dark",
+            paper_bgcolor="#0f172a",
+            font=dict(color="#cbd5e1")
         )
 
         st.plotly_chart(
@@ -325,11 +333,18 @@ with tab3:
             y="Count",
             color="Cluster",
             title="Cluster Sizes",
-            color_discrete_sequence=["#FF1493", "#00CED1", "#FFD700", "#FF69B4", "#32CD32", "#FFA500", "#00FF7F", "#FF6347", "#9370DB", "#20B2AA"]
+            color_discrete_sequence=[
+                "#06b6d4", "#10b981", "#f59e0b", "#ef4444", 
+                "#8b5cf6", "#ec4899", "#14b8a6", "#f97316",
+                "#6366f1", "#84cc16"
+            ]
         )
 
         bar.update_layout(
-            template="plotly_dark"
+            template="plotly_dark",
+            paper_bgcolor="#0f172a",
+            plot_bgcolor="#1e293b",
+            font=dict(color="#cbd5e1")
         )
 
         st.plotly_chart(
