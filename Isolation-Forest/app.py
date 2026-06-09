@@ -26,8 +26,8 @@ st.markdown("""
 .stApp{
 background:linear-gradient(
 135deg,
-#f8fafc,
-#dbeafe
+#0f172a,
+#1e293b
 );
 }
 
@@ -35,24 +35,41 @@ background:linear-gradient(
 text-align:center;
 font-size:48px;
 font-weight:bold;
-color:#dc2626;
+color:#f59e0b;
+text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 .sub-title{
 text-align:center;
 font-size:18px;
-color:#475569;
+color:#cbd5e1;
 }
 
 [data-testid="metric-container"]{
-background:white;
-border-radius:15px;
+background:linear-gradient(135deg, #1e293b, #334155);
+border-radius:12px;
 padding:15px;
-border:2px solid #fecaca;
+border:2px solid #f59e0b;
+box-shadow: 0 4px 6px rgba(245, 158, 11, 0.2);
 }
 
 [data-testid="stSidebar"]{
-background:#eff6ff;
+background:#1e293b;
+border-right: 2px solid #f59e0b;
+}
+
+.stTabs [data-baseweb="tab"] {
+    font-size:16px;
+    font-weight:600;
+    color:#cbd5e1;
+}
+
+.stDownloadButton button {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color:white;
+    border-radius:8px;
+    font-weight:bold;
+    border:2px solid #f59e0b;
 }
 
 </style>
@@ -183,14 +200,17 @@ with tab2:
         color="Anomaly",
         title="Anomaly Detection",
         color_discrete_map={
-            "1":"blue",
-            "-1":"red"
+            "1":"#10b981",
+            "-1":"#ef4444"
         }
     )
 
     fig.update_layout(
-        template="plotly_white",
-        height=600
+        template="plotly_dark",
+        height=600,
+        paper_bgcolor="#0f172a",
+        plot_bgcolor="#1e293b",
+        font=dict(color="#cbd5e1")
     )
 
     st.plotly_chart(
@@ -212,11 +232,15 @@ with tab3:
         score_df,
         x="Anomaly Score",
         nbins=30,
-        title="Anomaly Score Distribution"
+        title="Anomaly Score Distribution",
+        color_discrete_sequence=["#f59e0b"]
     )
 
     hist.update_layout(
-        template="plotly_white"
+        template="plotly_dark",
+        paper_bgcolor="#0f172a",
+        plot_bgcolor="#1e293b",
+        font=dict(color="#cbd5e1")
     )
 
     st.plotly_chart(
