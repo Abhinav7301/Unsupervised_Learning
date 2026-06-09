@@ -26,8 +26,8 @@ st.markdown("""
 .stApp{
 background:linear-gradient(
 135deg,
-#f8fafc,
-#dbeafe
+#0f172a,
+#1e293b
 );
 }
 
@@ -35,24 +35,42 @@ background:linear-gradient(
 text-align:center;
 font-size:48px;
 font-weight:bold;
-color:#2563eb;
+color:#6366f1;
+text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 .sub-title{
 text-align:center;
 font-size:18px;
-color:#475569;
+color:#cbd5e1;
+font-weight:bold;
 }
 
 [data-testid="metric-container"]{
-background:white;
-border-radius:15px;
+background:linear-gradient(135deg, #1e293b, #334155);
+border-radius:12px;
 padding:15px;
-border:2px solid #bfdbfe;
+border:2px solid #6366f1;
+box-shadow:0 4px 6px rgba(99, 102, 241, 0.2);
 }
 
 [data-testid="stSidebar"]{
-background:#eff6ff;
+background:#1e293b;
+border-right: 2px solid #6366f1;
+}
+
+.stTabs [data-baseweb="tab"] {
+    font-size:16px;
+    font-weight:600;
+    color:#cbd5e1;
+}
+
+.stDownloadButton button {
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    color:white;
+    border-radius:8px;
+    font-weight:bold;
+    border:2px solid #6366f1;
 }
 
 </style>
@@ -168,12 +186,15 @@ with tab2:
         y="Dim2",
         color="Dim1",
         title="t-SNE Projection",
-        color_continuous_scale="plasma"
+        color_continuous_scale="Viridis"
     )
 
     fig.update_layout(
-        template="plotly_white",
-        height=600
+        template="plotly_dark",
+        height=600,
+        paper_bgcolor="#0f172a",
+        plot_bgcolor="#1e293b",
+        font=dict(color="#cbd5e1")
     )
 
     st.plotly_chart(
